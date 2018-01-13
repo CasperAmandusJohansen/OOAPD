@@ -1,0 +1,22 @@
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.exe.config
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.exe
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.pdb
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csprojResolveAssemblyReference.cache
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Form1.resources
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Properties.Resources.resources
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csproj.GenerateResource.Cache
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.exe
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.pdb
+c:\users\casperamandus\documents\visual studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Operation.resources
+C:\Users\CasperAmandus\Documents\Visual Studio 2015\Projects\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csproj.CoreCompileInputs.cache
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csprojResolveAssemblyReference.cache
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Form1.resources
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Operation.resources
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.Properties.Resources.resources
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csproj.GenerateResource.Cache
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.csproj.CoreCompileInputs.cache
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.exe
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\obj\Debug\DAQSimulation.pdb
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.exe.config
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.exe
+C:\Users\CasperAmandus\Desktop\GIT\Assignment1\DAQSimulation\DAQSimulation\bin\Debug\DAQSimulation.pdb

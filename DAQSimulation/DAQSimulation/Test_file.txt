@@ -1,0 +1,2 @@
+System.Windows.Forms.TextBox, Text: 3,66,1,20,3,85,1,49,
+System.Windows.Forms.TextBox, Text: 3,66,1,20,3,85,1,49,3,66,1,20,3,85,1,49,
