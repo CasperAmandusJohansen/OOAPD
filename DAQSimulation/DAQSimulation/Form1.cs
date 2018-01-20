@@ -19,6 +19,7 @@ namespace DAQSimulation
         double timeLeft;
         double logtimeLeft;
         bool first = true;
+        bool textstart = false;
         bool clearSensorText = false;
         Sensor[] sObj = new Sensor[16]; //Max amount of sensors
         Filter[] fObj = new Filter[16]; 
@@ -179,7 +180,7 @@ namespace DAQSimulation
                 {
                     double y = sObj[id].GetValueAI();
                     double yf = fObj[id].MAfilter(y);
-                    sTxt = "XX" + y.ToString("0.00") + "XX" + "//" + yf.ToString("0.00") + "//";
+                    sTxt = y.ToString("0.00");
                     if (id == 0)
                     {
                         sensorDisplay.Text += now + " ," + sTxt + "V,";
@@ -201,10 +202,15 @@ namespace DAQSimulation
                 {
                     double y = sObj[id].GetValueAI();
                     double yf = fObj[id].MAfilter(y);
-                    sTxt = "XX" + y.ToString("0.00") + "XX" + "//" + yf.ToString("0.00") + "//";
-                    if (id == 0)
+                    sTxt = y.ToString("0.00");
+                    if (id == 0 && textstart == false)
                     {
                         sensorDisplay.Text += "\r\n" + now + " ," + sTxt + "V,";
+                    }
+                    else if (id == 0 && textstart == true)
+                    {
+                        sensorDisplay.Text += now + " ," + sTxt + "V,";
+                        textstart = false;
                     }
                     else if (id == maxAI - 1)
                     {
@@ -254,13 +260,20 @@ namespace DAQSimulation
 
         public void log()
         {
+            if(sensorDisplay.Text == "")
+            {
+                MessageBox.Show("There is nothing to log!");
+            }
+            else { 
             logtimeLeft = Convert.ToDouble(logTime.Text);
             loggingTimer.Interval = 100;
             loggingTimer.Start();
             StreamWriter sw = new StreamWriter(pathBox.Text, true);
             sw.WriteLine(sensorDisplay.Text);
             sw.Close();
-            clearSensorText = true;
+            sensorDisplay.Clear();
+            textstart = true;
+            }
         }
 
         private void groupBox5_Enter(object sender, EventArgs e)

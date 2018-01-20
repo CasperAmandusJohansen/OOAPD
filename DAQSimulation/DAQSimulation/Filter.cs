@@ -32,13 +32,12 @@ namespace DAQSimulation
             }
             else { 
             double yf;
-            yf = avgArray.Sum()/arLength;
-
             for (int i = 1; i <= arLength-1; i++)
                 {
                     avgArray[i] = avgArray[i-1]; //Shift array
             }
             avgArray[0] = y; //Set first index equal to input
+            yf = avgArray.Sum() / arLength;
             return yf;
             }
         }
