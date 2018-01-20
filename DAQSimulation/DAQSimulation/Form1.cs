@@ -21,6 +21,7 @@ namespace DAQSimulation
         bool first = true;
         bool clearSensorText = false;
         Sensor[] sObj = new Sensor[16]; //Max amount of sensors
+        Filter[] fObj = new Filter[16]; 
 
         public Form1()
         {
@@ -167,15 +168,18 @@ namespace DAQSimulation
             if (first == true)
             {
 
-                for (int counter = 0; counter < maxSid; counter++)
+                for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
                     sObj[counter] = new Sensor(counter + 1, Convert.ToInt32(maxVolt.Value), Convert.ToInt32(minVolt.Value)); //create sensors with seed values
+                    fObj[counter] = new Filter(counter + 1, 5); //Create filters
                 }
                 // Get the sensor object values as a string
                 //Create AI sensors
                 for (int id = 0; id < maxAI; id++)
                 {
-                    sTxt = sObj[id].GetValueAI().ToString("0.00");
+                    double y = sObj[id].GetValueAI();
+                    double yf = fObj[id].MAfilter(y);
+                    sTxt = "XX" + y.ToString("0.00") + "XX" + "//" + yf.ToString("0.00") + "//";
                     if (id == 0)
                     {
                         sensorDisplay.Text += now + " ," + sTxt + "V,";
@@ -195,7 +199,9 @@ namespace DAQSimulation
                 // Get the sensor object values as a string
                 for (int id = 0; id < maxAI; id++)
                 {
-                    sTxt = sObj[id].GetValueAI().ToString("0.00");
+                    double y = sObj[id].GetValueAI();
+                    double yf = fObj[id].MAfilter(y);
+                    sTxt = "XX" + y.ToString("0.00") + "XX" + "//" + yf.ToString("0.00") + "//";
                     if (id == 0)
                     {
                         sensorDisplay.Text += "\r\n" + now + " ," + sTxt + "V,";

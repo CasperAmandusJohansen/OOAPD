@@ -14,7 +14,6 @@ namespace DAQSimulation
         {
             sId = id;
             rSensVal = new Random(id); //id is seed value, will be same always
-            //dVal = rSensVal.NextDouble() * 5.0; //Simulate 0-5V input from DAQ
             dVal = minVolt + (maxVolt - minVolt) * rSensVal.NextDouble();
         }
         public virtual double GetValueAI()
@@ -23,8 +22,8 @@ namespace DAQSimulation
             return dVal;
         }
         public virtual double GetValueDI()
-        { //Simulate new reading from DAQ device
-            dVal += ((rSensVal.NextDouble() - 0.5F) / 1.0F); //Changing 10.0F changes resolution
+        {
+            dVal += ((rSensVal.NextDouble() - 0.5F) / 1.0F);
             if(dVal <= 0)
             {
                 dVal = 0;

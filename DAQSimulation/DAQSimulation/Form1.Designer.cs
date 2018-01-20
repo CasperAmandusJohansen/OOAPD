@@ -53,6 +53,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nmbSensors = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nmbDI = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.logTime = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,10 +71,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.File = new System.Windows.Forms.TabPage();
             this.Operation = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.nmbDI = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -79,14 +79,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.maxVolt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmbSensors)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smplTime)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.File.SuspendLayout();
             this.Operation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).BeginInit();
             this.SuspendLayout();
             // 
             // samplingButton
@@ -199,7 +199,7 @@
             this.helpMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1104, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1247, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -215,7 +215,7 @@
             this.groupBox3.Controls.Add(this.sensorDisplay);
             this.groupBox3.Location = new System.Drawing.Point(253, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(449, 211);
+            this.groupBox3.Size = new System.Drawing.Size(541, 211);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sensor Values";
@@ -227,7 +227,7 @@
             this.sensorDisplay.Name = "sensorDisplay";
             this.sensorDisplay.ReadOnly = true;
             this.sensorDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sensorDisplay.Size = new System.Drawing.Size(436, 182);
+            this.sensorDisplay.Size = new System.Drawing.Size(528, 182);
             this.sensorDisplay.TabIndex = 0;
             // 
             // samplingTimer
@@ -330,6 +330,51 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DAQ Properties";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 16);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Digital Sensors";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // nmbDI
+            // 
+            this.nmbDI.Location = new System.Drawing.Point(128, 14);
+            this.nmbDI.Name = "nmbDI";
+            this.nmbDI.Size = new System.Drawing.Size(42, 21);
+            this.nmbDI.TabIndex = 18;
+            this.nmbDI.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.nmbDI.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 183);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(62, 16);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Resolution";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(128, 180);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(42, 21);
+            this.numericUpDown1.TabIndex = 16;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -380,9 +425,9 @@
             // 
             this.groupBox5.Controls.Add(this.readBox);
             this.groupBox5.Controls.Add(this.readBtn);
-            this.groupBox5.Location = new System.Drawing.Point(708, 3);
+            this.groupBox5.Location = new System.Drawing.Point(800, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(370, 211);
+            this.groupBox5.Size = new System.Drawing.Size(419, 211);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "CSV File";
@@ -395,7 +440,7 @@
             this.readBox.Name = "readBox";
             this.readBox.ReadOnly = true;
             this.readBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.readBox.Size = new System.Drawing.Size(354, 151);
+            this.readBox.Size = new System.Drawing.Size(403, 151);
             this.readBox.TabIndex = 14;
             // 
             // readBtn
@@ -449,7 +494,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1092, 255);
+            this.tabControl1.Size = new System.Drawing.Size(1235, 255);
             this.tabControl1.TabIndex = 14;
             // 
             // File
@@ -461,7 +506,7 @@
             this.File.Location = new System.Drawing.Point(4, 25);
             this.File.Name = "File";
             this.File.Padding = new System.Windows.Forms.Padding(3);
-            this.File.Size = new System.Drawing.Size(1084, 226);
+            this.File.Size = new System.Drawing.Size(1227, 226);
             this.File.TabIndex = 0;
             this.File.Text = "File";
             this.File.UseVisualStyleBackColor = true;
@@ -480,55 +525,10 @@
             this.Operation.Text = "Operation";
             this.Operation.UseVisualStyleBackColor = true;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 183);
-            this.label8.Name = "label8";
-            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label8.Size = new System.Drawing.Size(62, 16);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Resolution";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(128, 180);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(42, 21);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 16);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Digital Sensors";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // nmbDI
-            // 
-            this.nmbDI.Location = new System.Drawing.Point(128, 14);
-            this.nmbDI.Name = "nmbDI";
-            this.nmbDI.Size = new System.Drawing.Size(42, 21);
-            this.nmbDI.TabIndex = 18;
-            this.nmbDI.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nmbDI.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1104, 281);
+            this.ClientSize = new System.Drawing.Size(1247, 281);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -549,6 +549,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmbSensors)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.smplTime)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -557,8 +559,6 @@
             this.File.ResumeLayout(false);
             this.Operation.ResumeLayout(false);
             this.Operation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
