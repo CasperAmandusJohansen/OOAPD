@@ -147,6 +147,7 @@ namespace DAQSimulation
 
         public void sample()
         {
+            try { 
             samplingTimer.Interval = 100;
             samplingTimer.Start();
 
@@ -256,10 +257,17 @@ namespace DAQSimulation
             }
             first = false;
             clearSensorText = false;
+            }
+            catch (InvalidCastException e)
+            {
+
+            }
         }
+
 
         public void log()
         {
+            try { 
             if(sensorDisplay.Text == "")
             {
                 MessageBox.Show("There is nothing to log!");
@@ -275,6 +283,11 @@ namespace DAQSimulation
             textstart = true;
             }
         }
+            catch (InvalidCastException e)
+            {
+
+            }
+       }
 
         private void groupBox5_Enter(object sender, EventArgs e)
         {
