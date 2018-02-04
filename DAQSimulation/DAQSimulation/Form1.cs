@@ -73,8 +73,7 @@ namespace DAQSimulation
 
         private void helpMenu_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This app simulates a DAQ device with a specified input range and sampling time. The app can log the data to a file in CSV format with a specified interval. " +
-                "Please input a value for all the parameters", "Input Information", System.Windows.Forms.MessageBoxButtons.OK);
+
         }
 
         private void operationMenu_Click(object sender, EventArgs e)
@@ -102,7 +101,6 @@ namespace DAQSimulation
                 {
                     lineCount++;
                 }
-
                 csvLine.Text = Convert.ToString(lineCount);
                 sr.Close();
             }
@@ -379,6 +377,17 @@ namespace DAQSimulation
         private void groupBox5_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void hlpBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This app simulates a DAQ device with a specified input range and sampling time. The app can log the data to a file in CSV format with a specified interval. " +
+    "Please input a value for all the parameters on the settings page", "Input Information", System.Windows.Forms.MessageBoxButtons.OK);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Author: Casper Amandus Johansen\r\nCreated: 01.01.2018\r\nLast revition: 04.02.2018\r\nDAQ Simulator, creates virtual sensors and logs them to a CSV file", "Input Information", System.Windows.Forms.MessageBoxButtons.OK);
         }
 
         private void label10_Click(object sender, EventArgs e)
