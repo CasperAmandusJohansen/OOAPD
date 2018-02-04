@@ -54,7 +54,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.nmbDI = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.resBox = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.logTime = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -116,7 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmbSensors)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smplTime)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -333,7 +333,7 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.nmbDI);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.numericUpDown1);
+            this.groupBox4.Controls.Add(this.resBox);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.logTime);
             this.groupBox4.Controls.Add(this.label6);
@@ -384,13 +384,13 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Resolution";
             // 
-            // numericUpDown1
+            // resBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(128, 188);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(42, 21);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.resBox.Location = new System.Drawing.Point(128, 188);
+            this.resBox.Name = "resBox";
+            this.resBox.Size = new System.Drawing.Size(42, 21);
+            this.resBox.TabIndex = 16;
+            this.resBox.Value = new decimal(new int[] {
             8,
             0,
             0,
@@ -570,144 +570,160 @@
             // slabel1
             // 
             this.slabel1.AutoSize = true;
+            this.slabel1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel1.Location = new System.Drawing.Point(6, 37);
             this.slabel1.Name = "slabel1";
-            this.slabel1.Size = new System.Drawing.Size(20, 16);
+            this.slabel1.Size = new System.Drawing.Size(19, 15);
             this.slabel1.TabIndex = 5;
             this.slabel1.Text = "S1";
             // 
             // slabel2
             // 
             this.slabel2.AutoSize = true;
+            this.slabel2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel2.Location = new System.Drawing.Point(6, 53);
             this.slabel2.Name = "slabel2";
-            this.slabel2.Size = new System.Drawing.Size(20, 16);
+            this.slabel2.Size = new System.Drawing.Size(19, 15);
             this.slabel2.TabIndex = 6;
             this.slabel2.Text = "S2";
             // 
             // slabel4
             // 
             this.slabel4.AutoSize = true;
+            this.slabel4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel4.Location = new System.Drawing.Point(6, 85);
             this.slabel4.Name = "slabel4";
-            this.slabel4.Size = new System.Drawing.Size(20, 16);
+            this.slabel4.Size = new System.Drawing.Size(19, 15);
             this.slabel4.TabIndex = 8;
             this.slabel4.Text = "S4";
             // 
             // slabel3
             // 
             this.slabel3.AutoSize = true;
+            this.slabel3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel3.Location = new System.Drawing.Point(6, 69);
             this.slabel3.Name = "slabel3";
-            this.slabel3.Size = new System.Drawing.Size(20, 16);
+            this.slabel3.Size = new System.Drawing.Size(19, 15);
             this.slabel3.TabIndex = 7;
             this.slabel3.Text = "S3";
             // 
             // slabel8
             // 
             this.slabel8.AutoSize = true;
+            this.slabel8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel8.Location = new System.Drawing.Point(6, 150);
             this.slabel8.Name = "slabel8";
-            this.slabel8.Size = new System.Drawing.Size(20, 16);
+            this.slabel8.Size = new System.Drawing.Size(19, 15);
             this.slabel8.TabIndex = 12;
             this.slabel8.Text = "S8";
             // 
             // slabel7
             // 
             this.slabel7.AutoSize = true;
+            this.slabel7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel7.Location = new System.Drawing.Point(6, 134);
             this.slabel7.Name = "slabel7";
-            this.slabel7.Size = new System.Drawing.Size(20, 16);
+            this.slabel7.Size = new System.Drawing.Size(19, 15);
             this.slabel7.TabIndex = 11;
             this.slabel7.Text = "S7";
             // 
             // slabel6
             // 
             this.slabel6.AutoSize = true;
+            this.slabel6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel6.Location = new System.Drawing.Point(6, 118);
             this.slabel6.Name = "slabel6";
-            this.slabel6.Size = new System.Drawing.Size(20, 16);
+            this.slabel6.Size = new System.Drawing.Size(19, 15);
             this.slabel6.TabIndex = 10;
             this.slabel6.Text = "S6";
             // 
             // slabel5
             // 
             this.slabel5.AutoSize = true;
+            this.slabel5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel5.Location = new System.Drawing.Point(6, 102);
             this.slabel5.Name = "slabel5";
-            this.slabel5.Size = new System.Drawing.Size(20, 16);
+            this.slabel5.Size = new System.Drawing.Size(19, 15);
             this.slabel5.TabIndex = 9;
             this.slabel5.Text = "S5";
             // 
             // slabel16
             // 
             this.slabel16.AutoSize = true;
+            this.slabel16.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel16.Location = new System.Drawing.Point(6, 279);
             this.slabel16.Name = "slabel16";
-            this.slabel16.Size = new System.Drawing.Size(26, 16);
+            this.slabel16.Size = new System.Drawing.Size(25, 15);
             this.slabel16.TabIndex = 20;
             this.slabel16.Text = "S16";
             // 
             // slabel15
             // 
             this.slabel15.AutoSize = true;
+            this.slabel15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel15.Location = new System.Drawing.Point(6, 263);
             this.slabel15.Name = "slabel15";
-            this.slabel15.Size = new System.Drawing.Size(26, 16);
+            this.slabel15.Size = new System.Drawing.Size(25, 15);
             this.slabel15.TabIndex = 19;
             this.slabel15.Text = "S15";
             // 
             // slabel14
             // 
             this.slabel14.AutoSize = true;
+            this.slabel14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel14.Location = new System.Drawing.Point(6, 247);
             this.slabel14.Name = "slabel14";
-            this.slabel14.Size = new System.Drawing.Size(26, 16);
+            this.slabel14.Size = new System.Drawing.Size(25, 15);
             this.slabel14.TabIndex = 18;
             this.slabel14.Text = "S14";
             // 
             // slabel13
             // 
             this.slabel13.AutoSize = true;
+            this.slabel13.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel13.Location = new System.Drawing.Point(6, 231);
             this.slabel13.Name = "slabel13";
-            this.slabel13.Size = new System.Drawing.Size(26, 16);
+            this.slabel13.Size = new System.Drawing.Size(25, 15);
             this.slabel13.TabIndex = 17;
             this.slabel13.Text = "S13";
             // 
             // slabel12
             // 
             this.slabel12.AutoSize = true;
+            this.slabel12.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel12.Location = new System.Drawing.Point(6, 214);
             this.slabel12.Name = "slabel12";
-            this.slabel12.Size = new System.Drawing.Size(26, 16);
+            this.slabel12.Size = new System.Drawing.Size(25, 15);
             this.slabel12.TabIndex = 16;
             this.slabel12.Text = "S12";
             // 
             // slabel11
             // 
             this.slabel11.AutoSize = true;
+            this.slabel11.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel11.Location = new System.Drawing.Point(6, 198);
             this.slabel11.Name = "slabel11";
-            this.slabel11.Size = new System.Drawing.Size(26, 16);
+            this.slabel11.Size = new System.Drawing.Size(25, 15);
             this.slabel11.TabIndex = 15;
             this.slabel11.Text = "S11";
             // 
             // slabel10
             // 
             this.slabel10.AutoSize = true;
+            this.slabel10.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel10.Location = new System.Drawing.Point(6, 182);
             this.slabel10.Name = "slabel10";
-            this.slabel10.Size = new System.Drawing.Size(26, 16);
+            this.slabel10.Size = new System.Drawing.Size(25, 15);
             this.slabel10.TabIndex = 14;
             this.slabel10.Text = "S10";
             // 
             // slabel9
             // 
             this.slabel9.AutoSize = true;
+            this.slabel9.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slabel9.Location = new System.Drawing.Point(6, 166);
             this.slabel9.Name = "slabel9";
-            this.slabel9.Size = new System.Drawing.Size(20, 16);
+            this.slabel9.Size = new System.Drawing.Size(19, 15);
             this.slabel9.TabIndex = 13;
             this.slabel9.Text = "S9";
             // 
@@ -910,15 +926,16 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(6, 21);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 16);
+            this.label13.Size = new System.Drawing.Size(34, 15);
             this.label13.TabIndex = 37;
             this.label13.Text = "Time:";
             // 
             // hlpBtn
             // 
-            this.hlpBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.hlpBtn.BackColor = System.Drawing.Color.Transparent;
             this.hlpBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hlpBtn.Location = new System.Drawing.Point(6, 291);
             this.hlpBtn.Name = "hlpBtn";
@@ -930,7 +947,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(6, 227);
             this.button2.Name = "button2";
@@ -962,7 +979,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmbDI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.smplTime)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -1014,7 +1031,7 @@
         private System.Windows.Forms.TabPage File;
         private System.Windows.Forms.TabPage Operation;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown resBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown nmbDI;
         private System.Windows.Forms.Label label11;

@@ -10,8 +10,7 @@ namespace DAQSimulation
     class CSV
     {
         string _fileName;
-        string writer, data;
-        double[] value;
+        string writer;
         int _maxAi, _maxDi, maxSid;
 
         public CSV(string fileName, int maxAi, int maxDi)

@@ -9,19 +9,20 @@ namespace DAQSimulation
     class Sensor
     {
         double dVal; int sId; Random rSensVal;
-        double smaxVolt, sminVolt;
+        double smaxVolt, sminVolt, res;
 
-        public Sensor(int id, int maxVolt, int minVolt)
+        public Sensor(int id, double maxVolt, double minVolt, int resolution)
         {
             sId = id;
             rSensVal = new Random(id); //id is seed value, will be same always
             smaxVolt = maxVolt;
             sminVolt = minVolt;
+            res = (maxVolt - minVolt) / (Math.Pow(2, resolution) - 1);
             dVal = minVolt + (maxVolt - minVolt) * rSensVal.NextDouble();
         }
         public virtual double GetValueAI()
         { //Simulate new reading from DAQ device
-            dVal += ((rSensVal.NextDouble() - 0.5F) /  10.0F); //Changing 10.0F changes resolution
+            dVal += (rSensVal.NextDouble() * 2 - 1) * res; //Random noise equal to resolution
 
             //Saturation
             if(dVal > smaxVolt)

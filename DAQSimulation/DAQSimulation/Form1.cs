@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace DAQSimulation
 {
@@ -94,15 +95,14 @@ namespace DAQSimulation
         private void button1_Click_1(object sender, EventArgs e)
         {
             try {
+                readBox.Clear();
                 StreamReader sr = new StreamReader(pathBox.Text);
                 readBox.Text = sr.ReadToEnd();
-                int lineCount = 0;
-                while ((sr.ReadLine()) != null)
-                {
-                    lineCount++;
-                }
-                csvLine.Text = Convert.ToString(lineCount);
                 sr.Close();
+                string[] lines = Regex.Split(readBox.Text.Trim(), "\r\n");
+                int lineCount = lines.Length;
+                csvLine.Text = lineCount.ToString();
+
             }
             catch
             {
@@ -240,7 +240,7 @@ namespace DAQSimulation
 
                     for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
-                    sObj[counter] = new Sensor(counter + 1, Convert.ToInt32(maxVolt.Value), Convert.ToInt32(minVolt.Value)); //create sensors with seed values
+                    sObj[counter] = new Sensor(counter + 1, Convert.ToDouble(maxVolt.Value), Convert.ToDouble(minVolt.Value), Convert.ToInt32(resBox.Text)); //create sensors with seed values
                     fObj[counter] = new Filter(counter + 1, 5); //Create filters
                 }
                 // Get the sensor object values as a string
