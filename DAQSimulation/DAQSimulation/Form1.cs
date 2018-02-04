@@ -22,7 +22,10 @@ namespace DAQSimulation
         bool textstart = false;
         bool clearSensorText = false;
         Sensor[] sObj = new Sensor[16]; //Max amount of sensors
-        Filter[] fObj = new Filter[16]; 
+        Filter[] fObj = new Filter[16];
+        double[] writeCSV = new double[16];
+        DateTime globalDateTime = new DateTime();
+        int maxSid, maxAI, maxDI;
 
         public Form1()
         {
@@ -94,6 +97,13 @@ namespace DAQSimulation
             try {
                 StreamReader sr = new StreamReader(pathBox.Text);
                 readBox.Text = sr.ReadToEnd();
+                int lineCount = 0;
+                while ((sr.ReadLine()) != null)
+                {
+                    lineCount++;
+                }
+
+                csvLine.Text = Convert.ToString(lineCount);
                 sr.Close();
             }
             catch
@@ -159,18 +169,78 @@ namespace DAQSimulation
 
             timeLeft = Convert.ToDouble(smplTime.Text);
 
-            int maxDI = Convert.ToInt32(nmbDI.Value);
-            int maxAI = Convert.ToInt32(nmbSensors.Value);
-            int maxSid = maxDI + maxAI; string sTxt;// Create an array of sensor objects
+            maxDI = Convert.ToInt32(nmbDI.Value);
+            maxAI = Convert.ToInt32(nmbSensors.Value);
+            maxSid = maxDI + maxAI; string sTxt;// Create an array of sensor objects
 
-            //Add timestamp
-            DateTime now = DateTime.Now;
 
-            //Get AI sensor values
-            if (first == true)
+                List<Label> myValueList = new List<Label>();
+                myValueList.Add(value1);
+                myValueList.Add(value2);
+                myValueList.Add(value3);
+                myValueList.Add(value4);
+                myValueList.Add(value5);
+                myValueList.Add(value6);
+                myValueList.Add(value7);
+                myValueList.Add(value8);
+                myValueList.Add(value9);
+                myValueList.Add(value10);
+                myValueList.Add(value11);
+                myValueList.Add(value12);
+                myValueList.Add(value13);
+                myValueList.Add(value14);
+                myValueList.Add(value15);
+                myValueList.Add(value16);
+
+                List<Label> myLabelList = new List<Label>();
+                myLabelList.Add(slabel1);
+                myLabelList.Add(slabel2);
+                myLabelList.Add(slabel3);
+                myLabelList.Add(slabel4);
+                myLabelList.Add(slabel5);
+                myLabelList.Add(slabel6);
+                myLabelList.Add(slabel7);
+                myLabelList.Add(slabel8);
+                myLabelList.Add(slabel9);
+                myLabelList.Add(slabel10);
+                myLabelList.Add(slabel11);
+                myLabelList.Add(slabel12);
+                myLabelList.Add(slabel13);
+                myLabelList.Add(slabel14);
+                myLabelList.Add(slabel15);
+                myLabelList.Add(slabel16);
+
+                for (int i = 0; i <= maxAI - 1; i++)
+                {
+                    // Do something to your textboxes here, for example:
+                    myLabelList[i].Text = "AI" + Convert.ToString(i);
+                }
+                for (int i = maxAI; i <= maxSid - 1; i++)
+                {
+                    // Do something to your textboxes here, for example:
+                    myLabelList[i].Text = "DI" + Convert.ToString(i - maxAI);
+                }
+                for (int i = maxSid; i <= 16 - 1; i++)
+                {
+                    // Do something to your textboxes here, for example:
+                    myLabelList[i].Visible = false;
+                    myValueList[i].Visible = false;
+                }
+
+
+
+                //Add timestamp
+                DateTime now = DateTime.Now;
+                globalDateTime = now;
+                latestTime.Text = now.ToString("hh:mm:ss");
+                double[] yf = new double[maxAI];
+                int[] yd = new int[maxDI];
+
+                //Get AI sensor values
+                if (first == true)
             {
 
-                for (int counter = 0; counter < maxSid; counter++) //Create objects
+                    for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
                     sObj[counter] = new Sensor(counter + 1, Convert.ToInt32(maxVolt.Value), Convert.ToInt32(minVolt.Value)); //create sensors with seed values
                     fObj[counter] = new Filter(counter + 1, 5); //Create filters
@@ -180,7 +250,13 @@ namespace DAQSimulation
                 for (int id = 0; id < maxAI; id++)
                 {
                     double y = sObj[id].GetValueAI();
-                    double yf = fObj[id].MAfilter(y);
+                    yf[id] = fObj[id].MAfilter(y);
+                    writeCSV[id] = yf[id];
+
+
+                    myValueList[id].Text = yf[id].ToString("0.00");
+                    
+                    
                     sTxt = y.ToString("0.00");
                     if (id == 0)
                     {
@@ -202,9 +278,11 @@ namespace DAQSimulation
                 for (int id = 0; id < maxAI; id++)
                 {
                     double y = sObj[id].GetValueAI();
-                    double yf = fObj[id].MAfilter(y);
+                    yf[id] = fObj[id].MAfilter(y);
                     sTxt = y.ToString("0.00");
-                    if (id == 0 && textstart == false)
+                    myValueList[id].Text = yf[id].ToString("0.00");
+                    writeCSV[id] = yf[id];
+                        if (id == 0 && textstart == false)
                     {
                         sensorDisplay.Text += "\r\n" + now + " ," + sTxt + "V,";
                     }
@@ -229,7 +307,10 @@ namespace DAQSimulation
                 for (int id = maxAI; id < maxSid; id++)
                 {
                     sTxt = sObj[id].GetValueDI().ToString("0");
-                 if (id == maxSid - 1)
+                    yd[id-maxAI] = Convert.ToInt16(sTxt);
+                    writeCSV[id] = yd[id-maxAI];
+                    myValueList[id].Text = sTxt;
+                    if (id == maxSid - 1)
                     {
                         sensorDisplay.Text += sTxt + ",\n";
                     }
@@ -245,7 +326,10 @@ namespace DAQSimulation
                 for (int id = maxAI; id < maxSid; id++)
                 {
                     sTxt = sObj[id].GetValueDI().ToString("0");
-                if (id == maxAI - 1)
+                    yd[id-maxAI] = Convert.ToInt16(sTxt);
+                    writeCSV[id] = yd[id-maxAI];
+                    myValueList[id].Text = sTxt;
+                    if (id == maxAI - 1)
                     {
                         sensorDisplay.Text += sTxt + ",";
                     }
@@ -255,6 +339,7 @@ namespace DAQSimulation
                     }
                 }
             }
+
             first = false;
             clearSensorText = false;
             }
@@ -276,9 +361,11 @@ namespace DAQSimulation
             logtimeLeft = Convert.ToDouble(logTime.Text);
             loggingTimer.Interval = 100;
             loggingTimer.Start();
-            StreamWriter sw = new StreamWriter(pathBox.Text, true);
-            sw.WriteLine(sensorDisplay.Text);
-            sw.Close();
+
+            //Write to CSV
+            CSV csv = new CSV(pathBox.Text, maxAI, maxDI);
+            csv.WriteToCSV(writeCSV, globalDateTime);
+            //Write to csv
             sensorDisplay.Clear();
             textstart = true;
             }
