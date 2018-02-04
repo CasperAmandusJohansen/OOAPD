@@ -240,8 +240,8 @@ namespace DAQSimulation
 
                     for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
-                    sObj[counter] = new Sensor(counter + 1, Convert.ToDouble(maxVolt.Value), Convert.ToDouble(minVolt.Value), Convert.ToInt32(resBox.Text)); //create sensors with seed values
-                    fObj[counter] = new Filter(counter + 1, 5); //Create filters
+                    sObj[counter] = new Sensor(counter, Convert.ToDouble(maxVolt.Value), Convert.ToDouble(minVolt.Value), Convert.ToInt32(resBox.Text)); //create sensors with seed values
+                    fObj[counter] = new Filter(counter, 5); //Create filters
                 }
                 // Get the sensor object values as a string
                 //Create AI sensors
