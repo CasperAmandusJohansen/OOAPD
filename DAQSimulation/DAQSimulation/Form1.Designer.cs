@@ -113,6 +113,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.filterLength = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -919,6 +920,7 @@
             // 
             // File
             // 
+            this.File.Controls.Add(this.button4);
             this.File.Controls.Add(this.button2);
             this.File.Controls.Add(this.hlpBtn);
             this.File.Controls.Add(this.groupBox1);
@@ -936,9 +938,9 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(6, 227);
+            this.button2.Location = new System.Drawing.Point(6, 276);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(241, 52);
+            this.button2.Size = new System.Drawing.Size(241, 30);
             this.button2.TabIndex = 6;
             this.button2.Text = "About";
             this.button2.UseVisualStyleBackColor = false;
@@ -948,9 +950,9 @@
             // 
             this.hlpBtn.BackColor = System.Drawing.Color.Transparent;
             this.hlpBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hlpBtn.Location = new System.Drawing.Point(6, 291);
+            this.hlpBtn.Location = new System.Drawing.Point(6, 312);
             this.hlpBtn.Name = "hlpBtn";
-            this.hlpBtn.Size = new System.Drawing.Size(241, 52);
+            this.hlpBtn.Size = new System.Drawing.Size(241, 31);
             this.hlpBtn.TabIndex = 5;
             this.hlpBtn.Text = "Help";
             this.hlpBtn.UseVisualStyleBackColor = false;
@@ -1018,6 +1020,18 @@
             this.button3.Text = "Apply";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(6, 240);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(241, 30);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Clear Sensor Values";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -1141,6 +1155,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown filterLength;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

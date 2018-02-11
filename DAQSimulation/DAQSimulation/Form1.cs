@@ -28,6 +28,7 @@ namespace DAQSimulation
         DateTime globalDateTime = new DateTime();
         int maxSid, maxAI, maxDI, samplectn;
         bool apply = false;
+        string lastLogTime = "";
 
         public Form1()
         {
@@ -209,23 +210,6 @@ namespace DAQSimulation
                 myLabelList.Add(slabel15);
                 myLabelList.Add(slabel16);
 
-                //Fill text boxes for the latest filtered values
-                for (int i = 0; i <= maxAI - 1; i++)
-                {
-                    myLabelList[i].Text = "AI" + Convert.ToString(i);
-                }
-                for (int i = maxAI; i <= maxSid - 1; i++)
-                {
-                    myLabelList[i].Text = "DI" + Convert.ToString(i - maxAI);
-                }
-                for (int i = maxSid; i <= 16 - 1; i++)
-                {
-                    myLabelList[i].Visible = false;
-                    myValueList[i].Visible = false;
-                }
-
-
-
                 //Add timestamp
                 DateTime now = DateTime.Now;
                 globalDateTime = now;
@@ -236,7 +220,24 @@ namespace DAQSimulation
                 //Get AI sensor values
                 if (first == true || apply == true)
             {
-                    
+                    //Fill text boxes for the latest filtered values
+                    for (int i = 0; i <= 16 - 1; i++)
+                    {
+                        myLabelList[i].Visible = true;
+                    }
+                        for (int i = 0; i <= maxAI - 1; i++)
+                    {
+                        myLabelList[i].Text = "AI" + Convert.ToString(i);
+                    }
+                    for (int i = maxAI; i <= maxSid - 1; i++)
+                    {
+                        myLabelList[i].Text = "DI" + Convert.ToString(i - maxAI);
+                    }
+                    for (int i = maxSid; i <= 16 - 1; i++)
+                    {
+                        myLabelList[i].Visible = false;
+                        myValueList[i].Visible = false;
+                    }
                     for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
                     sObj[counter] = new Sensor(counter, Convert.ToDouble(maxVolt.Value), Convert.ToDouble(minVolt.Value), Convert.ToInt32(resBox.Text)); //create sensors with seed values
@@ -255,15 +256,11 @@ namespace DAQSimulation
                     
                     
                     sTxt = y.ToString("0.00");
-                    if (id == 0 && apply == false)
+                    if (id == 0)
                     {
                         sensorDisplay.Text += now + "," + sTxt + "V,";
                     }
-                    else if(id == 0 && apply == true)
-                        {
-                            sensorDisplay.Text += "\r\nParameter change\r\n" + now + "," + sTxt + "V,";
-                        }
-                    else if (id == maxAI - 1)
+                        else if (id == maxAI - 1)
                     {
                         sensorDisplay.Text += sTxt + "V,\n";
                     }
@@ -348,15 +345,16 @@ namespace DAQSimulation
             }
             catch (InvalidCastException e)
             {
-
+                MessageBox.Show("Invalid parameters!");
             }
         }
 
 
         public void log()
         {
+
             try { 
-            if(sensorDisplay.Text == "")
+            if(latestTime.Text == "xx:xx:xx" || latestTime.Text == lastLogTime)
             {
                 MessageBox.Show("There is nothing to log!");
             }
@@ -365,13 +363,13 @@ namespace DAQSimulation
             loggingTimer.Interval = 100;
             loggingTimer.Start();
 
-            //Write to CSV
-            CSV csv = new CSV(pathBox.Text, maxAI, maxDI);
-            csv.WriteToCSV(writeCSV, globalDateTime);
-            //Write to csv
-            sensorDisplay.Clear();
-            textstart = true;
-            }
+                    //Write to CSV
+                     CSV csv = new CSV(pathBox.Text, maxAI, maxDI);
+                     csv.WriteToCSV(writeCSV, globalDateTime);
+                    //Write to csv
+                    sensorDisplay.Text += "\r\nData is logged!";
+                    lastLogTime = latestTime.Text;
+                }
         }
             catch (InvalidCastException e)
             {
@@ -397,6 +395,13 @@ namespace DAQSimulation
         private void button3_Click(object sender, EventArgs e)
         {
             apply = true;
+            sensorDisplay.Text += "\r\nParameter change!\r\n";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            sensorDisplay.Clear();
+            textstart = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
