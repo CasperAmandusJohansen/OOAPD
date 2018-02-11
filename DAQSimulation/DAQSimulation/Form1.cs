@@ -169,9 +169,13 @@ namespace DAQSimulation
 
             timeLeft = Convert.ToDouble(smplTime.Text);
 
-            maxDI = Convert.ToInt32(nmbDI.Value);
-            maxAI = Convert.ToInt32(nmbSensors.Value);
-            maxSid = maxDI + maxAI; string sTxt;// Create an array of sensor objects
+                if (first == true || apply == true) { 
+                maxDI = Convert.ToInt32(nmbDI.Value);
+                maxAI = Convert.ToInt32(nmbSensors.Value);
+                maxSid = maxDI + maxAI;
+                }
+
+                string sTxt;// Create an array of sensor objects
 
 
                 List<Label> myValueList = new List<Label>();
@@ -224,6 +228,7 @@ namespace DAQSimulation
                     for (int i = 0; i <= 16 - 1; i++)
                     {
                         myLabelList[i].Visible = true;
+                        myValueList[i].Visible = true;
                     }
                         for (int i = 0; i <= maxAI - 1; i++)
                     {
@@ -373,7 +378,7 @@ namespace DAQSimulation
         }
             catch (InvalidCastException e)
             {
-
+                MessageBox.Show("Logging error");
             }
        }
 
