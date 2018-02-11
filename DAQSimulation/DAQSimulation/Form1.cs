@@ -16,7 +16,6 @@ namespace DAQSimulation
 {
     public partial class Form1 : Form
     {
-        //public Operation operation;
         double timeLeft;
         double logtimeLeft;
         bool first = true;
@@ -353,8 +352,6 @@ namespace DAQSimulation
                 MessageBox.Show("Invalid parameters!");
             }
         }
-
-
         public void log()
         {
 
