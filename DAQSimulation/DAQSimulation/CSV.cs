@@ -23,6 +23,7 @@ namespace DAQSimulation
 
         public virtual void WriteToCSV(double[] value, DateTime timeStamp)
         {
+
             string data = "";
             for (int i = 0; i < _maxAi; i++)
             {

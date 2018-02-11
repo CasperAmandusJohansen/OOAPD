@@ -24,7 +24,7 @@ namespace DAQSimulation
         }
         public virtual double GetValueAI()
         { //Simulate new reading from DAQ device
-            dVal += (rSensVal.NextDouble() - 0.5) * 0.1;                      //Random noise equal to resolution
+            dVal += (rSensVal.NextDouble() - 0.5) * 0.1;             
 
             //Saturation
             if(dVal > smaxVolt)

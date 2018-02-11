@@ -26,7 +26,8 @@ namespace DAQSimulation
         Filter[] fObj = new Filter[16];
         double[] writeCSV = new double[16];
         DateTime globalDateTime = new DateTime();
-        int maxSid, maxAI, maxDI;
+        int maxSid, maxAI, maxDI, samplectn;
+        bool apply = false;
 
         public Form1()
         {
@@ -208,19 +209,17 @@ namespace DAQSimulation
                 myLabelList.Add(slabel15);
                 myLabelList.Add(slabel16);
 
+                //Fill text boxes for the latest filtered values
                 for (int i = 0; i <= maxAI - 1; i++)
                 {
-                    // Do something to your textboxes here, for example:
                     myLabelList[i].Text = "AI" + Convert.ToString(i);
                 }
                 for (int i = maxAI; i <= maxSid - 1; i++)
                 {
-                    // Do something to your textboxes here, for example:
                     myLabelList[i].Text = "DI" + Convert.ToString(i - maxAI);
                 }
                 for (int i = maxSid; i <= 16 - 1; i++)
                 {
-                    // Do something to your textboxes here, for example:
                     myLabelList[i].Visible = false;
                     myValueList[i].Visible = false;
                 }
@@ -235,13 +234,13 @@ namespace DAQSimulation
                 int[] yd = new int[maxDI];
 
                 //Get AI sensor values
-                if (first == true)
+                if (first == true || apply == true)
             {
-
+                    
                     for (int counter = 0; counter < maxSid; counter++) //Create objects
                 {
                     sObj[counter] = new Sensor(counter, Convert.ToDouble(maxVolt.Value), Convert.ToDouble(minVolt.Value), Convert.ToInt32(resBox.Text)); //create sensors with seed values
-                    fObj[counter] = new Filter(counter, 5); //Create filters
+                    fObj[counter] = new Filter(counter, Convert.ToInt32(filterLength.Value)); //Create filters
                 }
                 // Get the sensor object values as a string
                 //Create AI sensors
@@ -256,10 +255,14 @@ namespace DAQSimulation
                     
                     
                     sTxt = y.ToString("0.00");
-                    if (id == 0)
+                    if (id == 0 && apply == false)
                     {
-                        sensorDisplay.Text += now + " ," + sTxt + "V,";
+                        sensorDisplay.Text += now + "," + sTxt + "V,";
                     }
+                    else if(id == 0 && apply == true)
+                        {
+                            sensorDisplay.Text += "\r\nParameter change\r\n" + now + "," + sTxt + "V,";
+                        }
                     else if (id == maxAI - 1)
                     {
                         sensorDisplay.Text += sTxt + "V,\n";
@@ -269,7 +272,8 @@ namespace DAQSimulation
                         sensorDisplay.Text += sTxt + "V,";
                     }
                 }
-            }
+                    apply = false;
+                }
             else
             {
                 // Get the sensor object values as a string
@@ -282,11 +286,11 @@ namespace DAQSimulation
                     writeCSV[id] = yf[id];
                         if (id == 0 && textstart == false)
                     {
-                        sensorDisplay.Text += "\r\n" + now + " ," + sTxt + "V,";
+                        sensorDisplay.Text += "\r\n" + now + "," + sTxt + "V,";
                     }
                     else if (id == 0 && textstart == true)
                     {
-                        sensorDisplay.Text += now + " ," + sTxt + "V,";
+                        sensorDisplay.Text += now + "," + sTxt + "V,";
                         textstart = false;
                     }
                     else if (id == maxAI - 1)
@@ -337,7 +341,8 @@ namespace DAQSimulation
                     }
                 }
             }
-
+                samplectn = samplectn + 1;
+                sampleCounter.Text = Convert.ToString(samplectn);
             first = false;
             clearSensorText = false;
             }
@@ -381,13 +386,22 @@ namespace DAQSimulation
 
         private void hlpBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This app simulates a DAQ device with a specified input range and sampling time. The app can log the data to a file in CSV format with a specified interval. " +
-    "Please input a value for all the parameters on the settings page", "Input Information", System.Windows.Forms.MessageBoxButtons.OK);
+            MessageBox.Show("This app simulates a DAQ device with a specified input range and sampling time.\r\nThe app can log the data to a file in CSV format with a specified interval.\r\nPlease input a value for all the parameters on the settings page", "Help", System.Windows.Forms.MessageBoxButtons.OK);
+        }
+
+        private void applyBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            apply = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Author: Casper Amandus Johansen\r\nCreated: 01.01.2018\r\nLast revition: 04.02.2018\r\nDAQ Simulator, creates virtual sensors and logs them to a CSV file", "Input Information", System.Windows.Forms.MessageBoxButtons.OK);
+            MessageBox.Show("Author: Casper Amandus Johansen\r\nCreated: 01.01.2018\r\nLast revition: 11.02.2018\r\nEmail: casper.johansen404@gmail.com", "About", System.Windows.Forms.MessageBoxButtons.OK);
         }
 
         private void label10_Click(object sender, EventArgs e)

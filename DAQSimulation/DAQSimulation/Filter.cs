@@ -15,7 +15,7 @@ namespace DAQSimulation
         public Filter(int id, int arlength)
         {
             _arLength = arlength;
-            //Array.Resize(ref avgArray, _arLength); //MAke the array resizble from the main program.
+            Array.Resize(ref avgArray, _arLength); //MAke the array resizble from the main program.
             sId = id;
             
         }
